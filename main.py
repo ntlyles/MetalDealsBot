@@ -1,20 +1,12 @@
-import os
-from dotenv import load_dotenv
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
-
-load_dotenv()  # Load from .env file
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("✅ Bot is working. You're awesome.")
 
 def main():
-    token = os.getenv("TELEGRAM_BOT_TOKEN")
-    if not token:
-        print("❌ TELEGRAM_BOT_TOKEN is missing!")
-        return
-    else:
-        print("✅ Token loaded. Starting bot...")
+    token = "7250493926:AAHxUn43CY8g1TRzau05Wvruu1nTjxxdY"  # hardcoded
+    print("✅ Token hardcoded, launching bot...")
 
     app = ApplicationBuilder().token(token).build()
     app.add_handler(CommandHandler("start", start))
